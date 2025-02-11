@@ -1,10 +1,12 @@
 const express = require("express");
 const blogRoutes = require("./routes/blogRoutes");
+const connectDatabase = require("./database");
 
 const app = express();
 
 app.use(express.json());
 
+connectDatabase()
 
 app.use("/api", blogRoutes);
 
