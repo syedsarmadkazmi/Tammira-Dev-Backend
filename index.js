@@ -1,6 +1,6 @@
 const express = require("express");
 const blogRoutes = require("./routes/blogRoutes");
-const connectDatabase = require("./database");
+const connectDatabase = require("./database/connect");
 const dotenv = require("dotenv");
 
 const app = express();
