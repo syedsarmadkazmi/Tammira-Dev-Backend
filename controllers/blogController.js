@@ -20,5 +20,14 @@ exports.getBlogs = async (req, res) => {
 exports.updateBlogById = async (req, res) => {
     const { id } = req.params;
 
-    res.json({ message: 'updateBlogById are working', blogId: id });
+    if(!id) {
+      res.status(400).json({ error: 'Blog id is required' });
+    }
+
+    try {
+      const updatedBlog = await Blog.findByIdAndUpdate(id, req.body, { new: true });
+      res.status(200).json(updatedBlog);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
 };
