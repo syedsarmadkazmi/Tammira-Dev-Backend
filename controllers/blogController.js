@@ -3,8 +3,10 @@ const Blog = require("../models/Blog");
 exports.getBlogs = async (req, res) => {
     const { page = 1, limit = 10, tags } = req.query;
 
+    const dbQuery = tags ? { tags: { $in: tags.split(",") } } : {};
+
     try {
-        const blogs = await Blog.find()
+        const blogs = await Blog.find(dbQuery)
           .skip((page - 1) * limit)
           .limit(parseInt(limit));
 
