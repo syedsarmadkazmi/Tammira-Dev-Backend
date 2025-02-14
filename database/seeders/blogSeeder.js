@@ -24,27 +24,20 @@ const seedBlogs = async () => {
 
         // blog data
         const blogs = [
-            {
-                title: "Sample Blog Title",
-                sub_title: "Sample Blog Subtitle",
-                content: "This is the blog content...",
-                slug: "sample-blog-title",
-                tags: ["tech", "javascript"],
-                created_date: new Date("2025-01-30T12:00:00Z"),
-                modified_date: new Date("2025-01-30T14:00:00Z"),
-                author: users[0]._id
-            },
-            {
-                title: "Another Blog Post",
-                sub_title: "A deep dive into Node.js",
-                content: "Exploring the inner workings of Node.js...",
-                slug: "deep-dive-nodejs",
-                tags: ["nodejs", "backend"],
+        ];
+
+        for (let i = 0; i < 25; i++) {
+            blogs.push({
+                title: `Blog Post #${i}`,
+                sub_title: `Random Subtitle #${i}`,
+                content: "Generated blog content...",
+                slug: `blog-post-${i}`,
+                tags: i % 2 === 0 ? ["random", "react", "javascript"] : ["tech", "node", "typescript"],
                 created_date: new Date(),
                 modified_date: new Date(),
-                author: users[1]._id
-            }
-        ];
+                author: users[i % 2]._id
+            });
+        }
 
 
         //remove old data
