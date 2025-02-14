@@ -7,13 +7,7 @@ const BlogSchema = new mongoose.Schema(
     content: { type: String },
     slug: { type: String, unique: true, required: true },
     tags: [{ type: String }],
-    author: {
-      _id: { type: mongoose.Schema.Types.ObjectId, required: true },
-      first_name: String,
-      last_name: String,
-      bio: String,
-      profile_pic_url: String,
-    },
+    author: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
   },
   { timestamps: { createdAt: "created_date", updatedAt: "modified_date" } }
 );
